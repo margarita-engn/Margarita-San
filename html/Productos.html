@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos | Huellitas Fashion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background-color: #fffaf5; color: #333; }
+    header {
+      background-color: #ffffff; padding: 1rem 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; color: #e11d48; text-decoration: none; }
+    nav a {
+      color: #4b5563; text-decoration: none; margin-left: 1.5rem;
+      font-weight: 600; transition: color 0.3s;
+    }
+    nav a:hover, nav a.activo { color: #e11d48; border-bottom: 2px solid #e11d48; padding-bottom: 4px; }
+    .carrito-btn {
+      background-color: #e11d48; color: #fff; border: none;
+      padding: 0.5rem 1rem; border-radius: 20px; font-weight: bold; cursor: pointer;
+    }
+    .contenedor { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; }
+    .titulo { text-align: center; font-size: 2.2rem; color: #be123c; margin-bottom: 0.5rem; }
+    .subtitulo { text-align: center; color: #6b7280; margin-bottom: 2.5rem; }
+    .grid-productos {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 1.5rem;
+    }
+    .tarjeta {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #fce7f3;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .tarjeta img { width: 100%; height: 210px; object-fit: cover; }
+    .tarjeta-info { padding: 1.2rem; }
+    .categoria { font-size: 0.78rem; color: #e11d48; font-weight: bold; text-transform: uppercase; }
+    .tarjeta h3 { margin: 0.4rem 0; font-size: 1.2rem; }
+    .tarjeta p { font-size: 0.9rem; color: #6b7280; margin-bottom: 0.8rem; }
+    .tallas {
+      font-size: 0.8rem; background: #fef2f2; color: #be123c;
+      padding: 0.25rem 0.6rem; border-radius: 6px; display: inline-block; margin-bottom: 1rem;
+    }
+    .precio-fila {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 0.8rem; border-top: 1px solid #f3f4f6;
+    }
+    .precio { font-size: 1.3rem; font-weight: bold; color: #1f2937; }
+    .btn-agregar {
+      background-color: #1f2937; color: #fff; border: none;
+      padding: 0.6rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 600;
+    }
+    .btn-agregar:hover { background-color: #e11d48; }
+    footer {
+      background-color: #1f2937; color: #d1d5db; text-align: center;
+      padding: 1.5rem; margin-top: 3rem; font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🐾 Huellitas Fashion </h1>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="productos.html" class="activo">Productos</a>
+      <a href="modelos.html">Modelos</a>
+    </nav>
+    <button class="carrito-btn" onclick="verCarrito()">🛍️ Carrito (<span id="contador">0</span>)</button>
+  </header>
+
+  <main class="contenedor">
+    <h1 class="titulo">Catálogo de Productos</h1>
+    <p class="subtitulo">Elige la prenda favorita para tu engreído</p>
+
+    <div class="grid-productos">
+      <div class="tarjeta">
+        <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=600&q=80" alt="Suéter tejido">
+        <div class="tarjeta-info">
+          <span class="categoria">Abrigos</span>
+          <h3>Suéter Tejido Clásico</h3>
+          <p>Lana suave antialérgica perfecta para mantenerlo abrigado en invierno.</p>
+          <span class="tallas">Tallas: XS, S, M, L</span>
+          <div class="precio-fila">
+            <span class="precio">S/ 45</span>
+            <button class="btn-agregar" onclick="agregar('Suéter Tejido Clásico', 45)">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?auto=format&fit=crop&w=600&q=80" alt="Polera con capucha">
+        <div class="tarjeta-info">
+          <span class="categoria">Urbano</span>
+          <h3>Polera Hoodie Sport</h3>
+          <p>Diseño moderno con capucha y bolsillo trasero, súper cómodo para pasear.</p>
+          <span class="tallas">Tallas: S, M, L</span>
+          <div class="precio-fila">
+            <span class="precio">S/ 49</span>
+            <button class="btn-agregar" onclick="agregar('Polera Hoodie Sport', 49)">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80" alt="Camisa elegante">
+        <div class="tarjeta-info">
+          <span class="categoria">Gala</span>
+          <h3>Camisa con Corbatín</h3>
+          <p>Ideal para cumpleaños, reuniones familiares y sesiones fotográficas.</p>
+          <span class="tallas">Tallas: XS, S, M</span>
+          <div class="precio-fila">
+            <span class="precio">S/ 38</span>
+            <button class="btn-agregar" onclick="agregar('Camisa con Corbatín', 38)">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600&q=80" alt="Bandana estampada">
+        <div class="tarjeta-info">
+          <span class="categoria">Accesorios</span>
+          <h3>Pañoleta / Bandana</h3>
+          <p>Tela fresca de algodón con broche ajustable para cualquier tamaño de cuello.</p>
+          <span class="tallas">Talla Única</span>
+          <div class="precio-fila">
+            <span class="precio">S/ 20</span>
+            <button class="btn-agregar" onclick="agregar('Pañoleta / Bandana', 20)">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Huellitas Fashion - Proyecto Web por Margarita Sánchez | Publicado en GitHub Pages</p>
+  </footer>
+
+  <script>
+    let carrito = [];
+    let total = 0;
+    function agregar(nombre, precio) {
+      carrito.push({ nombre, precio });
+      total += precio;
+      document.getElementById('contador').textContent = carrito.length;
+      alert(`🐾 Agregaste "${nombre}" al carrito.`);
+    }
+    function verCarrito() {
+      if (carrito.length === 0) { alert('Tu carrito está vacío.'); return; }
+      let detalle = carrito.map((p, i) => `${i + 1}. ${p.nombre} - S/ ${p.precio}`).join('\n');
+      alert(`🛍️ Tu Pedido:\n\n${detalle}\n\nTotal a pagar: S/ ${total}`);
+    }
+  </script>
+
+</body>
+</html>
